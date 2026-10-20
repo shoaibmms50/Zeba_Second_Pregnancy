@@ -46,7 +46,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 15px;
-            color: var(--text-main);
+            color: #000;
             min-height: 100vh;
             background: linear-gradient(-45deg, #ffc3a0, #ffafbd, #ffc3a0, #ffdde1);
             background-size: 400% 400%;
@@ -54,9 +54,9 @@
             position: relative;
             overflow-x: hidden;
             width: 100vw;
-            /* Added text shadow to ensure readability without backgrounds */
-            text-shadow: 0px 0px 8px rgba(255,255,255,0.9), 0px 0px 3px rgba(255,255,255,1);
-            font-weight: 600;
+            /* Enhanced text shadow for absolute clarity against transparent backgrounds */
+            text-shadow: 0 1px 3px rgba(255,255,255,0.9), 0 0 8px white, 0 0 12px white;
+            font-weight: 700;
         }
 
         /* Glowing Orbs */
@@ -89,16 +89,15 @@
 
         .container {
             width: 100%; max-width: 1200px; margin: auto; 
-            /* Completely removed background and glass effect */
-            background: transparent;
+            background: transparent; border: none; box-shadow: none; backdrop-filter: none;
             padding: 30px;
             position: relative; z-index: 1; overflow: hidden;
         }
 
         h1, h3, h4 { 
             color: #d63384; 
-            text-shadow: 0px 0px 10px rgba(255,255,255,1), 0px 0px 5px rgba(255,255,255,0.9); 
-            font-weight: 800;
+            text-shadow: 0 1px 3px rgba(255,255,255,1), 0 0 10px white, 0 0 15px white; 
+            font-weight: 900;
         }
         h1 { text-align: center; font-size: 2.8em; margin-bottom: 20px; line-height: 1.2; }
 
@@ -123,8 +122,8 @@
         
         /* INNER CARDS - Removed backgrounds completely */
         .card { 
-            background: transparent;
-            padding: 25px; width: 100%;
+            background: transparent; border: none; box-shadow: none;
+            padding: 10px 25px; width: 100%;
         }
         
         .chart-container { position: relative; height: 280px; width: 100%; }
@@ -135,11 +134,11 @@
         .pie-center-text .lbl { font-size: 0.85em; color: #111; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;}
 
         /* Removed background completely from inner sections */
-        .info-box { background: transparent; border-left: 5px solid var(--primary-pink); padding: 15px; margin-top: 15px; font-size: 0.95em; line-height: 1.5; border-radius: 0;}
+        .info-box { background: transparent; border-left: 5px solid var(--primary-pink); padding: 15px; margin-top: 15px; font-size: 0.95em; line-height: 1.5; border-radius: 0; box-shadow: none;}
 
         /* TIME SPLIT PANELS */
         .time-split-container { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-        .time-card { flex: 1; min-width: 130px; padding: 15px; text-align: center; background: transparent; border: 2px solid rgba(255,255,255,0.7); border-radius: 15px;}
+        .time-card { flex: 1; min-width: 130px; padding: 15px; text-align: center; background: transparent; border: 2px solid rgba(255,255,255,0.7); border-radius: 15px; box-shadow: none;}
         .time-card.elapsed { border-color: rgba(255, 182, 193, 1); }
         .time-card.remaining { 
             border: 2px dashed #d39e00; 
@@ -163,9 +162,9 @@
         /* ITEM ROWS */
         .item-row {
             display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; 
-            background: transparent;
+            background: transparent; border: none; box-shadow: none;
             padding: 20px; margin-bottom: 20px; 
-            border-bottom: 1px solid rgba(255,255,255,0.6); align-items: start; width: 100%;
+            border-bottom: 1px solid rgba(255,255,255,0.8); align-items: start; width: 100%;
         }
         .item-img-col { position: relative; border-radius: 15px; overflow: hidden; background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.5); padding: 10px; }
         .item-img-col img { width: 100%; height: auto; max-height: 400px; object-fit: contain; display: block; margin: 0 auto; border-radius: 8px; cursor: pointer; transition: transform 0.2s;}
@@ -195,7 +194,7 @@
         .close { position: absolute; top: 15px; right: 25px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; text-shadow: 0 2px 4px rgba(0,0,0,0.5); z-index: 10000;}
 
         /* RE-ENGINEERED METERS */
-        .meter-wrapper { margin-top: 30px; background: transparent; padding: 20px 0; position: relative; border-bottom: 1px dashed rgba(255,255,255,0.6);}
+        .meter-wrapper { margin-top: 30px; background: transparent; padding: 20px 0; position: relative; border-bottom: 1px dashed rgba(255,255,255,0.8); border-top: none; border-left: none; border-right: none; box-shadow: none;}
         .meter-title { font-weight: bold; font-size: 0.95em; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;}
         
         .meter-indicator { font-size: 0.75em; padding: 4px 10px; border-radius: 12px; font-weight: bold; white-space: nowrap; text-shadow: none;}
@@ -229,19 +228,18 @@
         /* TIMELINE */
         .timeline { position: relative; padding-left: 30px; margin-top: 10px; }
         .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--primary-pink), var(--secondary-pink)); border-radius: 2px; }
-        .timeline-item { position: relative; margin-bottom: 25px; background: transparent; padding: 15px 0; }
+        .timeline-item { position: relative; margin-bottom: 25px; background: transparent; padding: 15px 0; border: none; box-shadow: none;}
         .timeline-item::before { content: ''; position: absolute; left: -28px; top: 15px; width: 14px; height: 14px; background: #fff; border: 4px solid var(--primary-pink); border-radius: 50%; box-shadow: 0 0 5px rgba(0,0,0,0.2);}
         .timeline-date { color: #d63384; font-weight: bold; font-size: 1.05em; margin-bottom: 5px;}
         
-        .future-visit { border: 2px dashed #d39e00; padding: 15px; border-radius: 15px; background: rgba(255,255,255,0.4); animation: pulseGolden 2s infinite; }
+        .future-visit { border: 2px dashed #d39e00; padding: 15px; border-radius: 15px; background: transparent; animation: pulseGolden 2s infinite; }
         .future-visit::before { border-color: gold !important; background: gold !important; box-shadow: 0 0 10px gold;}
-        .future-visit .timeline-date { color: #d39e00; font-size: 1.2em; text-shadow: 0 0 5px rgba(255,255,255,1);}
+        .future-visit .timeline-date { color: #d39e00; font-size: 1.2em; text-shadow: 0 0 8px white;}
 
         /* Align calendars correctly */
-        .cal-wrapper { display: flex; flex-direction: column; gap: 15px; height: 100%; justify-content: space-between; }
-        .month-cal { background: transparent; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.6);}
-        /* Push the September calendar to the bottom of the flex column to align with the left items */
-        .month-cal:last-child { border-bottom: none; margin-top: auto; }
+        .cal-wrapper { display: flex; flex-direction: column; gap: 15px; height: 100%; justify-content: center; align-items: center; }
+        .month-cal { background: transparent; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.8); border-top: none; border-left: none; border-right: none; box-shadow: none; width: 100%; max-width: 350px;}
+        .month-cal:last-child { border-bottom: none; margin-top: 0; }
         .month-cal h4 { text-align: center; margin: 0 0 10px 0; font-size: 1.1em;}
         .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 5px; font-size: 0.85em; }
         .cal-grid span { padding: 5px 0; font-weight: bold;}
@@ -356,6 +354,34 @@
                 <div class="info-box">
                     <strong>Current BMI: 18.4</strong> (Age: 30 | Height: 5'6" | Weight: 51.5kg)<br>
                     <em>Insight:</em> A dip from 53kg to 51.5kg in the first trimester is very standard for a 2nd pregnancy due to early metabolic shifts and morning sickness. 
+                </div>
+            </div>
+        </div>
+
+        <!-- DOCTOR'S INSIGHTS SECTION -->
+        <div class="card" style="margin-top: 20px; padding: 0;">
+            <h3 style="text-align: center; margin-bottom: 25px; font-size: 2em;">🩺 Dr. Padma's Insights (Oct 9, 2026)</h3>
+            <div class="grid-2" style="gap: 20px;">
+                <div class="info-box" style="margin-top: 0;">
+                    <h4 style="margin-top: 0; font-size: 1.2em;">Diet & Nutrition 🥩</h4>
+                    <p>Fruits (citrus, kiwi, apples) are overrated and mostly satisfy sugar/fiber needs without aiding the baby's core development.</p>
+                    <p><strong>High protein is mandatory</strong> (think of it like building muscle/bone at the gym).<br>
+                    <em>Recommended:</em> Milk, paneer, cheese, badam, eggs, chicken, mutton, bone soup, dal. Roti-bhaji alone is simply not enough for baby's tissue growth.</p>
+                </div>
+                <div class="info-box" style="margin-top: 0;">
+                    <h4 style="margin-top: 0; font-size: 1.2em;">Delivery Outlook 🏥</h4>
+                    <p>A Normal delivery trial is possible in the 9th month, but there is a <strong>70% chance of a C-Section</strong>.</p>
+                    <p><em>Reasoning:</em> Because the first pregnancy required a C-Section due to lack of dilation and natural pains (after light bleeding started), this biological history is highly likely to repeat.</p>
+                </div>
+                <div class="info-box" style="margin-top: 0;">
+                    <h4 style="margin-top: 0; font-size: 1.2em;">Financial Estimates 💰</h4>
+                    <p><strong>C-Section at Motherhood Hospital:</strong> Estimated to start from ₹1.2 Lakhs (all-inclusive package).</p>
+                    <p><em>Note:</em> Dedicated baby charges are billed separately. The doctor is entirely open to us switching to a different hospital in the future if we prefer.</p>
+                </div>
+                <div class="info-box" style="margin-top: 0;">
+                    <h4 style="margin-top: 0; font-size: 1.2em;">Action Items 📝</h4>
+                    <p><strong>Nov 8:</strong> The Golden Milestone. Do the NT Scan (Ultrasound) first, followed immediately by the Double Marker blood test.</p>
+                    <p><strong>Sun, Oct 11:</strong> Collect the officially signed 3-month Work From Home recommendation letter from the clinic between 11:00 AM and 3:00 PM.</p>
                 </div>
             </div>
         </div>
