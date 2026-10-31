@@ -42,6 +42,13 @@
             100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.4); transform: scale(1); }
         }
 
+        /* WEEKLY JOURNEY HIGHLIGHT GLOW */
+        @keyframes ultraGoldenGlow {
+            0% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.2); border-color: #ffd93b; }
+            50% { box-shadow: 0 0 35px rgba(255, 215, 0, 1), inset 0 0 25px rgba(255, 215, 0, 0.4); border-color: #fff; transform: scale(1.03); }
+            100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.2); border-color: #ffd93b; }
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -107,7 +114,7 @@
             background: rgba(255, 255, 255, 0.8); border: 2px solid rgba(255,255,255,0.9); padding: 12px 25px;
             border-radius: 30px; cursor: pointer; font-size: 16px; font-weight: bold; color: var(--text-main);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(0,0,0,0.1); white-space: nowrap;
-            text-shadow: none; /* Keep button text clear */
+            text-shadow: none;
         }
         .tab-btn.active, .tab-btn:hover {
             background: rgba(255, 255, 255, 1); border-color: var(--primary-pink); color: var(--primary-pink);
@@ -120,7 +127,7 @@
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
         
-        /* INNER CARDS - Removed backgrounds completely */
+        /* ZERO INTERNAL BACKGROUND CARDS */
         .card { 
             background: transparent; border: none; box-shadow: none;
             padding: 10px 25px; width: 100%;
@@ -133,7 +140,7 @@
         .pie-center-text .pct { font-size: 2em; font-weight: 800; color: #d63384; line-height: 1; text-shadow: 0 0 10px rgba(255,255,255,1);}
         .pie-center-text .lbl { font-size: 0.85em; color: #111; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;}
 
-        /* Removed background completely from inner sections */
+        /* TRANSPARENT INFO BOXES */
         .info-box { background: transparent; border-left: 5px solid var(--primary-pink); padding: 15px; margin-top: 15px; font-size: 0.95em; line-height: 1.5; border-radius: 0; box-shadow: none;}
 
         /* TIME SPLIT PANELS */
@@ -159,14 +166,14 @@
             box-shadow: 0 5px 15px rgba(255,107,139,0.4); transition: all 0.3s; margin-bottom: 20px; margin-top: 10px; text-shadow: none;
         }
 
-        /* ITEM ROWS */
+        /* ITEM ROWS (TRANSPARENT) */
         .item-row {
             display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; 
             background: transparent; border: none; box-shadow: none;
             padding: 20px; margin-bottom: 20px; 
             border-bottom: 1px solid rgba(255,255,255,0.8); align-items: start; width: 100%;
         }
-        .item-img-col { position: relative; border-radius: 15px; overflow: hidden; background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.5); padding: 10px; }
+        .item-img-col { position: relative; border-radius: 15px; overflow: hidden; background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.5); padding: 10px; display: flex; align-items: center; justify-content: center;}
         .item-img-col img { width: 100%; height: auto; max-height: 400px; object-fit: contain; display: block; margin: 0 auto; border-radius: 8px; cursor: pointer; transition: transform 0.2s;}
         .item-img-col img:hover { transform: scale(1.02); }
         
@@ -192,6 +199,36 @@
         .modal { display: none; position: fixed; z-index: 9999; padding-top: 40px; left: 0; top: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); flex-direction: column; align-items: center; justify-content: center; }
         .modal-content { margin: auto; display: block; max-width: 95%; max-height: 85vh; border-radius: 12px; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.5);}
         .close { position: absolute; top: 15px; right: 25px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; text-shadow: 0 2px 4px rgba(0,0,0,0.5); z-index: 10000;}
+
+        /* WEEKLY JOURNEY CARDS */
+        .weekly-list { display: flex; flex-direction: column; gap: 25px; padding: 10px 0; }
+        .week-card {
+            display: grid; grid-template-columns: 250px 1fr; gap: 25px;
+            background: transparent; border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 20px; padding: 20px; transition: transform 0.3s;
+            position: relative; align-items: center;
+        }
+        .week-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.9); }
+        .week-card.current-week {
+            border: 4px solid #ffd93b; 
+            background: transparent;
+            animation: ultraGoldenGlow 2s infinite; 
+            z-index: 10;
+        }
+        .week-card.current-week::after {
+            content: '✨ CURRENT WEEK ✨'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: #ffd93b; color: #333; padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: 900; text-shadow: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .week-img-wrapper {
+            background: rgba(255,255,255,0.4); border-radius: 15px; overflow: hidden; height: 100%; min-height: 250px;
+            display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.8);
+        }
+        .week-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .week-info { padding: 10px 0; }
+        .week-info h2 { margin: 0 0 10px 0; font-size: 2em; color: #d63384; line-height: 1.1; }
+        .week-stats { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
+        .stat-badge { background: rgba(255,255,255,0.8); padding: 5px 12px; border-radius: 20px; font-size: 0.9em; text-shadow: none; border: 1px solid rgba(0,0,0,0.1); }
+        .week-desc { font-size: 1.05em; line-height: 1.6; }
 
         /* RE-ENGINEERED METERS */
         .meter-wrapper { margin-top: 30px; background: transparent; padding: 20px 0; position: relative; border-bottom: 1px dashed rgba(255,255,255,0.8); border-top: none; border-left: none; border-right: none; box-shadow: none;}
@@ -253,11 +290,59 @@
         .cal-grid .highlight .cal-icon { font-size: 1.1em; line-height: 1; margin-top: 3px; }
         .cal-grid .empty { color: transparent; }
 
+        /* WEEKLY JOURNEY STYLES */
+        .week-card {
+            background: transparent; border: 1px solid rgba(255,255,255,0.6); 
+            border-radius: 20px; padding: 20px; margin-bottom: 25px;
+            display: flex; gap: 20px; align-items: stretch;
+            position: relative; overflow: visible;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .week-card.current-week {
+            border: 4px solid #ffd93b; 
+            background: transparent;
+            animation: ultraGoldenGlow 2s infinite; 
+            z-index: 10;
+        }
+        .current-badge {
+            position: absolute; top: -15px; right: 20px;
+            background: #ffd93b; color: #333; font-weight: 900; font-size: 1.1em;
+            padding: 5px 15px; border-radius: 20px; box-shadow: 0 4px 10px rgba(255,215,0,0.5);
+            text-shadow: none; z-index: 5;
+        }
+        
+        .week-visuals { flex: 0 0 220px; display: flex; flex-direction: column; gap: 12px; }
+        
+        .week-img {
+            border-radius: 12px; overflow: hidden; height: 180px;
+            border: 2px solid rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.4);
+            display: flex; justify-content: center; align-items: center;
+        }
+        .week-img img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; transition: transform 0.2s;}
+        .week-img img:hover { transform: scale(1.02); }
+        
+        /* New Comparison Object Styling */
+        .object-card {
+            background: rgba(255,255,255,0.7); border: 2px solid rgba(255,255,255,0.9); border-radius: 12px;
+            padding: 10px; display: flex; align-items: center; justify-content: center; gap: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left;
+        }
+        .object-emoji { font-size: 2.2em; filter: drop-shadow(0 3px 4px rgba(0,0,0,0.2)); line-height: 1;}
+        .object-text { font-size: 1em; font-weight: 900; color: #d63384; text-shadow: 0 1px 3px rgba(255,255,255,1); line-height: 1.1;}
+
+        .week-details { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .week-title { font-size: 1.6em; color: #d63384; margin: 0 0 10px 0; font-weight: 900; text-shadow: 0 1px 3px rgba(255,255,255,1), 0 0 10px white;}
+        .week-desc { font-size: 1em; color: #111; line-height: 1.6; font-weight: 700; text-shadow: 0 1px 3px rgba(255,255,255,0.9), 0 0 8px white; }
+
         @media (max-width: 768px) {
             body { padding: 0; }
             .container { padding: 15px; }
             h1 { font-size: 2em; }
             .grid-2 { grid-template-columns: 1fr; gap: 15px; }
+            .week-card { grid-template-columns: 1fr; text-align: center; }
+            .week-img-wrapper { min-height: 200px; max-height: 300px; }
+            .week-stats { justify-content: center; }
             .card { padding: 10px; }
             .item-row { grid-template-columns: 1fr; gap: 15px; padding: 15px 0; }
             .item-img-col img { max-height: 250px; }
@@ -268,6 +353,13 @@
             .cal-grid { font-size: 0.75em; }
             .cal-grid .highlight { min-height: 45px; }
             .month-cal:last-child { margin-top: 0; } /* Reset margin on mobile */
+            
+            /* Mobile tweaks for Weekly Journey */
+            .week-card { flex-direction: column; align-items: center; text-align: center; }
+            .week-visuals { flex: 0 0 auto; width: 100%; max-width: 280px; }
+            .week-img { height: 220px; }
+            .object-card { justify-content: center; text-align: center; }
+            .current-badge { right: 50%; transform: translateX(50%); top: -20px; white-space: nowrap; }
         }
     </style>
 </head>
@@ -300,10 +392,11 @@
 
     <div class="tabs">
         <button class="tab-btn active" onclick="openTab('dashboard')">📈 Dashboard</button>
+        <button class="tab-btn" onclick="openTab('weekly')">📅 Weekly Journey</button>
         <button class="tab-btn" onclick="openTab('events')">🎉 Events</button>
         <button class="tab-btn" onclick="openTab('tablets')">💊 Prescriptions (2)</button>
         <button class="tab-btn" onclick="openTab('ultrasounds')">👶 Ultrasounds (5)</button>
-        <button class="tab-btn" onclick="openTab('bloodtests')">🩸 Blood Tests (8)</button>
+        <button class="tab-btn" onclick="openTab('bloodtests')">🩸 Blood Tests</button>
         <button class="tab-btn" onclick="openTab('visits')">🩺 Dr. Padma</button>
     </div>
 
@@ -352,8 +445,8 @@
                 <h3>Weight Trend</h3>
                 <div class="chart-container"><canvas id="weightChart"></canvas></div>
                 <div class="info-box">
-                    <strong>Current BMI: 18.4</strong> (Age: 30 | Height: 5'6" | Weight: 51.5kg)<br>
-                    <em>Insight:</em> A dip from 53kg to 51.5kg in the first trimester is very standard for a 2nd pregnancy due to early metabolic shifts and morning sickness. 
+                    <strong>Current BMI: 18.2</strong> (Age: 30 | Height: 5'6" | Weight: 51.2kg)<br>
+                    <em>Insight:</em> A dip from 53kg to 51.2kg in the first trimester is very standard for a 2nd pregnancy due to early metabolic shifts and morning sickness. 
                 </div>
             </div>
         </div>
@@ -387,11 +480,20 @@
         </div>
     </div>
 
+    <!-- WEEKLY JOURNEY -->
+    <div id="weekly" class="tab-content">
+        <div class="card" style="padding: 0;">
+            <h3 style="text-align: center; margin-bottom: 25px; font-size: 2em;">Fetal Development Tracker 🐣</h3>
+            <div id="weekly-container">
+                <!-- Javascript will populate this -->
+            </div>
+        </div>
+    </div>
+
     <!-- EVENTS -->
     <div id="events" class="tab-content">
         <div class="item-row">
             <div class="item-img-col">
-                <!-- Using a generic placeholder image name based on your request -->
                 <a href="Duphalac_syrup.jpeg" download="Duphalac_syrup.jpeg" class="download-btn">⬇ Download</a>
                 <img src="https://placehold.co/400x400/ffdde1/333?text=Duphalac+Syrup" alt="Duphalac Syrup" onerror="this.src='Duphalac syrup.jpeg'">
             </div>
@@ -957,6 +1059,13 @@
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
         event.currentTarget.classList.add('active');
+        
+        if (tabId === 'weekly-journey') {
+             setTimeout(() => {
+                const currentCard = document.querySelector('.current-week');
+                if(currentCard) { currentCard.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            }, 100);
+        }
     }
 
     function toggleFolder(id) {
@@ -970,6 +1079,117 @@
             icon.innerText = '▶';
         }
     }
+
+    function tryNextLocalImage(imgElem, w, attempt) {
+        // Absolute path fallback specifically for your PC
+        const basePath = "file:///C:/Users/PC/Desktop/Escalation%20Ladder%20Project%20-%20Claude/Zeba%202nd%20Pregnancy%20Tracker/";
+        
+        // Ensure single digit numbers get a leading zero (e.g. 2 becomes "02")
+        const paddedW = w.toString().padStart(2, '0');
+        
+        // List of exact file name combinations matching your screenshot
+        const paths = [
+            `${paddedW}_Week.jpg`,
+            basePath + `${paddedW}_Week.jpg`,
+            `${w}_Week.jpg`,
+            basePath + `${w}_Week.jpg`
+        ];
+        
+        if (attempt < paths.length) {
+            imgElem.onerror = function() {
+                tryNextLocalImage(imgElem, w, attempt + 1);
+            };
+            imgElem.src = paths[attempt];
+        } else {
+            imgElem.onerror = null;
+            imgElem.alt = "Image Not Found: Week " + w;
+        }
+    }
+
+    function renderWeeklyJourney() {
+        const container = document.getElementById('weekly-container');
+        if(!container) return;
+        
+        const currentWeek = 11; // Can be dynamically calculated using the LMP later
+        
+        // Added 'emoji' parameter for every single week to auto-generate comparison objects
+        const weekData = [
+            { size: "Microscopic", emoji: "🔬", desc: "The journey begins! The sperm and egg unite to form a single cell called a zygote." },
+            { size: "Pinhead", emoji: "📍", desc: "The blastocyst implants into the uterine lining. The amniotic sac and placenta begin to form." },
+            { size: "Poppy Seed", emoji: "⚫", desc: "The neural tube (brain and spinal cord) is forming. The embryo is tiny but growing rapidly." },
+            { size: "Apple Seed", emoji: "🌱", desc: "The tiny heart begins to beat! Blood vessels are forming and circulating blood." },
+            { size: "Sweet Pea", emoji: "🫛", desc: "Facial features (jaw, cheeks, chin) are beginning to take shape. Tiny buds that will become arms and legs appear." },
+            { size: "Blueberry", emoji: "🫐", desc: "The brain is growing incredibly fast. Kidneys, liver, and lungs are developing." },
+            { size: "Raspberry", emoji: "🍓", desc: "Webbed fingers and toes are forming. The baby is constantly moving, though you can't feel it yet." },
+            { size: "Cherry", emoji: "🍒", desc: "Bones are beginning to harden. All essential organs have begun to form." },
+            { size: "Strawberry", emoji: "🍓", desc: "The fetal stage begins! Kidneys are producing urine, and the baby can bend its arms and legs." },
+            { size: "Fig", emoji: "🍐", desc: "Almost all major organs are formed and functioning. Genitals are developing rapidly." },
+            { size: "Lime", emoji: "🍋", desc: "Reflexes are kicking in! The baby can open and close its fingers and curl its toes." },
+            { size: "Peapod", emoji: "🫛", desc: "Tiny unique fingerprints are already formed on the fingertips." },
+            { size: "Lemon", emoji: "🍋", desc: "Facial expressions! The baby can squint, frown, and grimace. Kidneys are functioning." },
+            { size: "Apple", emoji: "🍎", desc: "The baby is practicing breathing, inhaling amniotic fluid into developing lungs." },
+            { size: "Avocado", emoji: "🥑", desc: "A massive growth spurt is happening. The heart is pumping about 25 quarts of blood a day." },
+            { size: "Turnip", emoji: "🧅", desc: "Fat is beginning to accumulate, helping the baby stay warm and providing energy." },
+            { size: "Bell Pepper", emoji: "🫑", desc: "Hearing is rapidly developing. The baby might hear your heartbeat and stomach rumbling." },
+            { size: "Heirloom Tomato", emoji: "🍅", desc: "A protective waxy coating called vernix is forming over the skin to protect it from the amniotic fluid." },
+            { size: "Banana", emoji: "🍌", desc: "Halfway there! The baby is swallowing more, which is good practice for the digestive system." },
+            { size: "Carrot", emoji: "🥕", desc: "You might be feeling flutters or kicks now! The baby's movements are becoming more coordinated." },
+            { size: "Spag. Squash", emoji: "🎃", desc: "Eyebrows and lashes are completely formed. Grip is getting stronger." },
+            { size: "Large Mango", emoji: "🥭", desc: "Billions of brain cells are developing. Lungs are preparing for life outside the womb." },
+            { size: "Ear of Corn", emoji: "🌽", desc: "The baby has reached the age of viability. The inner ear is fully developed, helping with balance." },
+            { size: "Rutabaga", emoji: "🥔", desc: "Hair is growing on the head, and capillaries are forming under the skin, giving it a pink hue." },
+            { size: "Scallion", emoji: "🌱", desc: "Eyes are opening! The baby can blink and respond to bright light outside the belly." },
+            { size: "Cauliflower", emoji: "🥦", desc: "Brain activity is very active. The baby is developing a regular sleep and wake schedule." },
+            { size: "Eggplant", emoji: "🍆", desc: "The baby might be dreaming now! Rapid eye movement (REM) sleep begins." },
+            { size: "Butternut Squash", emoji: "🥜", desc: "Bones are fully developed but still soft and pliable. Muscle tone is improving." },
+            { size: "Cabbage", emoji: "🥬", desc: "Amniotic fluid volume shrinks as the baby gets bigger and takes up more space." },
+            { size: "Coconut", emoji: "🥥", desc: "All five senses are working. The baby can process information, track light, and perceive signals." },
+            { size: "Jicama", emoji: "🥔", desc: "The baby is practicing swallowing and breathing. Lanugo (fine body hair) starts falling off." },
+            { size: "Pineapple", emoji: "🍍", desc: "The immune system is getting a huge boost with antibodies from the mother." },
+            { size: "Cantaloupe", emoji: "🍈", desc: "Fat layers are plumping up the arms and legs. Central nervous system is maturing." },
+            { size: "Honeydew", emoji: "🍈", desc: "Kidneys are fully developed, and the liver can process some waste products." },
+            { size: "Romaine Lettuce", emoji: "🥬", desc: "The baby is likely dropping head-down into the pelvis, preparing for birth." },
+            { size: "Swiss Chard", emoji: "🥬", desc: "Considered early term! The baby is just practicing and plumping up now." },
+            { size: "Leek", emoji: "🧅", desc: "Brain and lungs are continuing to mature. Vocal cords are ready for that first cry." },
+            { size: "Mini Watermelon", emoji: "🍉", desc: "Full term! The baby has shed most of its vernix and lanugo." },
+            { size: "Small Pumpkin", emoji: "🎃", desc: "Due date week! The baby is fully cooked and ready to meet the world anytime." },
+            { size: "Jack-o'-lantern", emoji: "🎃", desc: "Late term. The baby is just getting cozier and a little bigger while waiting for the right moment." }
+        ];
+
+        let html = '';
+        for (let w = 2; w <= 41; w++) {
+            const isCurrent = w === currentWeek;
+            const data = weekData[w - 2] || { size: "Growing...", emoji: "✨", desc: "Developing steadily." };
+            
+            // Format number to string, padding single digits with '0' (e.g. "02")
+            const paddedW = w.toString().padStart(2, '0');
+            
+            html += `
+                <div class="week-card ${isCurrent ? 'current-week' : ''}" id="week-${w}">
+                    ${isCurrent ? '<div class="current-badge">✨ CURRENT WEEK ✨</div>' : ''}
+                    
+                    <div class="week-visuals">
+                        <div class="week-img">
+                            <img src="${paddedW}_Week.jpg" alt="Week ${w} Fetus" onerror="tryNextLocalImage(this, ${w}, 1)" onclick="document.getElementById('imageModal').style.display='flex'; document.getElementById('modalImg').src=this.src;">
+                        </div>
+                        <div class="object-card">
+                            <div class="object-emoji">${data.emoji}</div>
+                            <div class="object-text">Size:<br>${data.size}</div>
+                        </div>
+                    </div>
+
+                    <div class="week-details">
+                        <h4 class="week-title">Week ${w}</h4>
+                        <div class="week-desc">${data.desc}</div>
+                    </div>
+                </div>
+            `;
+        }
+        container.innerHTML = html;
+    }
+    
+    // Execute rendering on script load
+    renderWeeklyJourney();
 
     function calculateTimelines() {
         const lmpDate = new Date('2026-08-16T00:00:00');
@@ -1058,10 +1278,10 @@
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['2 Months Ago', '1 Month Ago', 'Today'],
+            labels: ['2 Months Ago', '1 Month Ago', '25 Oct 2026', '01 Nov 2026'],
             datasets: [{
                 label: 'Weight',
-                data: [53, 52, 51.5],
+                data: [53, 52, 51.5, 51.2],
                 borderColor: '#ff6b8b',
                 backgroundColor: 'rgba(255, 107, 139, 0.2)',
                 borderWidth: 4,
