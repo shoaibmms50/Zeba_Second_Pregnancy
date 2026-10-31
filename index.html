@@ -1110,56 +1110,74 @@
         const container = document.getElementById('weekly-container');
         if(!container) return;
         
-        const currentWeek = 11; // Can be dynamically calculated using the LMP later
+        // Dynamically calculate the current week based on LMP and Today
+        const lmpDate = new Date('2026-08-16T00:00:00');
+        const today = new Date();
+        const elapsedDiff = today - lmpDate;
+        let currentWeek = Math.floor(elapsedDiff / (1000 * 60 * 60 * 24 * 7)) + 1;
+        if (currentWeek < 1) currentWeek = 1;
+        if (currentWeek > 41) currentWeek = 41;
+
+        const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+        function formatDate(d) {
+            return `${d.getDate().toString().padStart(2, '0')} ${monthNames[d.getMonth()]} ${d.getFullYear()}`;
+        }
         
-        // Added 'emoji' parameter for every single week to auto-generate comparison objects
+        // Completely updated with everyday Indian household items and foods!
         const weekData = [
-            { size: "Microscopic", emoji: "🔬", desc: "The journey begins! The sperm and egg unite to form a single cell called a zygote." },
-            { size: "Pinhead", emoji: "📍", desc: "The blastocyst implants into the uterine lining. The amniotic sac and placenta begin to form." },
-            { size: "Poppy Seed", emoji: "⚫", desc: "The neural tube (brain and spinal cord) is forming. The embryo is tiny but growing rapidly." },
-            { size: "Apple Seed", emoji: "🌱", desc: "The tiny heart begins to beat! Blood vessels are forming and circulating blood." },
-            { size: "Sweet Pea", emoji: "🫛", desc: "Facial features (jaw, cheeks, chin) are beginning to take shape. Tiny buds that will become arms and legs appear." },
-            { size: "Blueberry", emoji: "🫐", desc: "The brain is growing incredibly fast. Kidneys, liver, and lungs are developing." },
-            { size: "Raspberry", emoji: "🍓", desc: "Webbed fingers and toes are forming. The baby is constantly moving, though you can't feel it yet." },
-            { size: "Cherry", emoji: "🍒", desc: "Bones are beginning to harden. All essential organs have begun to form." },
-            { size: "Strawberry", emoji: "🍓", desc: "The fetal stage begins! Kidneys are producing urine, and the baby can bend its arms and legs." },
-            { size: "Fig", emoji: "🍐", desc: "Almost all major organs are formed and functioning. Genitals are developing rapidly." },
-            { size: "Lime", emoji: "🍋", desc: "Reflexes are kicking in! The baby can open and close its fingers and curl its toes." },
-            { size: "Peapod", emoji: "🫛", desc: "Tiny unique fingerprints are already formed on the fingertips." },
-            { size: "Lemon", emoji: "🍋", desc: "Facial expressions! The baby can squint, frown, and grimace. Kidneys are functioning." },
-            { size: "Apple", emoji: "🍎", desc: "The baby is practicing breathing, inhaling amniotic fluid into developing lungs." },
-            { size: "Avocado", emoji: "🥑", desc: "A massive growth spurt is happening. The heart is pumping about 25 quarts of blood a day." },
-            { size: "Turnip", emoji: "🧅", desc: "Fat is beginning to accumulate, helping the baby stay warm and providing energy." },
-            { size: "Bell Pepper", emoji: "🫑", desc: "Hearing is rapidly developing. The baby might hear your heartbeat and stomach rumbling." },
-            { size: "Heirloom Tomato", emoji: "🍅", desc: "A protective waxy coating called vernix is forming over the skin to protect it from the amniotic fluid." },
-            { size: "Banana", emoji: "🍌", desc: "Halfway there! The baby is swallowing more, which is good practice for the digestive system." },
-            { size: "Carrot", emoji: "🥕", desc: "You might be feeling flutters or kicks now! The baby's movements are becoming more coordinated." },
-            { size: "Spag. Squash", emoji: "🎃", desc: "Eyebrows and lashes are completely formed. Grip is getting stronger." },
-            { size: "Large Mango", emoji: "🥭", desc: "Billions of brain cells are developing. Lungs are preparing for life outside the womb." },
-            { size: "Ear of Corn", emoji: "🌽", desc: "The baby has reached the age of viability. The inner ear is fully developed, helping with balance." },
-            { size: "Rutabaga", emoji: "🥔", desc: "Hair is growing on the head, and capillaries are forming under the skin, giving it a pink hue." },
-            { size: "Scallion", emoji: "🌱", desc: "Eyes are opening! The baby can blink and respond to bright light outside the belly." },
-            { size: "Cauliflower", emoji: "🥦", desc: "Brain activity is very active. The baby is developing a regular sleep and wake schedule." },
-            { size: "Eggplant", emoji: "🍆", desc: "The baby might be dreaming now! Rapid eye movement (REM) sleep begins." },
-            { size: "Butternut Squash", emoji: "🥜", desc: "Bones are fully developed but still soft and pliable. Muscle tone is improving." },
-            { size: "Cabbage", emoji: "🥬", desc: "Amniotic fluid volume shrinks as the baby gets bigger and takes up more space." },
-            { size: "Coconut", emoji: "🥥", desc: "All five senses are working. The baby can process information, track light, and perceive signals." },
-            { size: "Jicama", emoji: "🥔", desc: "The baby is practicing swallowing and breathing. Lanugo (fine body hair) starts falling off." },
-            { size: "Pineapple", emoji: "🍍", desc: "The immune system is getting a huge boost with antibodies from the mother." },
-            { size: "Cantaloupe", emoji: "🍈", desc: "Fat layers are plumping up the arms and legs. Central nervous system is maturing." },
-            { size: "Honeydew", emoji: "🍈", desc: "Kidneys are fully developed, and the liver can process some waste products." },
-            { size: "Romaine Lettuce", emoji: "🥬", desc: "The baby is likely dropping head-down into the pelvis, preparing for birth." },
-            { size: "Swiss Chard", emoji: "🥬", desc: "Considered early term! The baby is just practicing and plumping up now." },
-            { size: "Leek", emoji: "🧅", desc: "Brain and lungs are continuing to mature. Vocal cords are ready for that first cry." },
-            { size: "Mini Watermelon", emoji: "🍉", desc: "Full term! The baby has shed most of its vernix and lanugo." },
-            { size: "Small Pumpkin", emoji: "🎃", desc: "Due date week! The baby is fully cooked and ready to meet the world anytime." },
-            { size: "Jack-o'-lantern", emoji: "🎃", desc: "Late term. The baby is just getting cozier and a little bigger while waiting for the right moment." }
+            { size: "Mustard Seed (Rai)", emoji: "⚫", desc: "The journey begins! The sperm and egg unite to form a single cell called a zygote." },
+            { size: "Sabudana Pearl", emoji: "⚪", desc: "The blastocyst implants into the uterine lining. The amniotic sac and placenta begin to form." },
+            { size: "Jeera (Cumin Seed)", emoji: "🟤", desc: "The neural tube (brain and spinal cord) is forming. The embryo is tiny but growing rapidly." },
+            { size: "Moong Dal", emoji: "🟢", desc: "The tiny heart begins to beat! Blood vessels are forming and circulating blood." },
+            { size: "Kabuli Chana", emoji: "🟡", desc: "Facial features (jaw, cheeks, chin) are beginning to take shape. Tiny buds that will become arms and legs appear." },
+            { size: "Jamun (Black Plum)", emoji: "🫐", desc: "The brain is growing incredibly fast. Kidneys, liver, and lungs are developing." },
+            { size: "Amla (Gooseberry)", emoji: "🍏", desc: "Webbed fingers and toes are forming. The baby is constantly moving, though you can't feel it yet." },
+            { size: "Supari (Betel Nut)", emoji: "🌰", desc: "Bones are beginning to harden. All essential organs have begun to form." },
+            { size: "Small Nimbu", emoji: "🍋", desc: "The fetal stage begins! Kidneys are producing urine, and the baby can bend its arms and legs." },
+            { size: "Tamatar (Tomato)", emoji: "🍅", desc: "Almost all major organs are formed and functioning. Genitals are developing rapidly." },
+            { size: "Amrood (Guava)", emoji: "🍐", desc: "Reflexes are kicking in! The baby can open and close its fingers and curl its toes." },
+            { size: "Mausambi", emoji: "🍈", desc: "Tiny unique fingerprints are already formed on the fingertips." },
+            { size: "Santra (Orange)", emoji: "🍊", desc: "Facial expressions! The baby can squint, frown, and grimace. Kidneys are functioning." },
+            { size: "Seb (Apple)", emoji: "🍎", desc: "The baby is practicing breathing, inhaling amniotic fluid into developing lungs." },
+            { size: "Anar (Pomegranate)", emoji: "🔴", desc: "A massive growth spurt is happening. The heart is pumping about 25 quarts of blood a day." },
+            { size: "Pyaaz (Large Onion)", emoji: "🧅", desc: "Fat is beginning to accumulate, helping the baby stay warm and providing energy." },
+            { size: "Aloo (Big Potato)", emoji: "🥔", desc: "Hearing is rapidly developing. The baby might hear your heartbeat and stomach rumbling." },
+            { size: "Aam (Mango)", emoji: "🥭", desc: "A protective waxy coating called vernix is forming over the skin to protect it from the amniotic fluid." },
+            { size: "Small Nariyal", emoji: "🥥", desc: "Halfway there! The baby is swallowing more, which is good practice for the digestive system." },
+            { size: "Papeeta (Papaya)", emoji: "🥭", desc: "You might be feeling flutters or kicks now! The baby's movements are becoming more coordinated." },
+            { size: "Baingan (Brinjal)", emoji: "🍆", desc: "Eyebrows and lashes are completely formed. Grip is getting stronger." },
+            { size: "Bhutta (Corn)", emoji: "🌽", desc: "Billions of brain cells are developing. Lungs are preparing for life outside the womb." },
+            { size: "Phool Gobi", emoji: "🥦", desc: "The baby has reached the age of viability. The inner ear is fully developed, helping with balance." },
+            { size: "Patta Gobi", emoji: "🥬", desc: "Hair is growing on the head, and capillaries are forming under the skin, giving it a pink hue." },
+            { size: "Lauki (Bottle Gourd)", emoji: "🥒", desc: "Eyes are opening! The baby can blink and respond to bright light outside the belly." },
+            { size: "Mooli (Radish)", emoji: "🥕", desc: "Brain activity is very active. The baby is developing a regular sleep and wake schedule." },
+            { size: "Kharbuja", emoji: "🍈", desc: "The baby might be dreaming now! Rapid eye movement (REM) sleep begins." },
+            { size: "Ananas (Pineapple)", emoji: "🍍", desc: "Bones are fully developed but still soft and pliable. Muscle tone is improving." },
+            { size: "Large Nariyal", emoji: "🥥", desc: "Amniotic fluid volume shrinks as the baby gets bigger and takes up more space." },
+            { size: "Chakotra (Pomelo)", emoji: "🍋", desc: "All five senses are working. The baby can process information, track light, and perceive signals." },
+            { size: "Petha (Ash Gourd)", emoji: "🍈", desc: "The baby is practicing swallowing and breathing. Lanugo (fine body hair) starts falling off." },
+            { size: "Large Papeeta", emoji: "🥭", desc: "The immune system is getting a huge boost with antibodies from the mother." },
+            { size: "Small Kathal", emoji: "🍈", desc: "Fat layers are plumping up the arms and legs. Central nervous system is maturing." },
+            { size: "Small Tarbooz", emoji: "🍉", desc: "Kidneys are fully developed, and the liver can process some waste products." },
+            { size: "Kele ka Guchha", emoji: "🍌", desc: "The baby is likely dropping head-down into the pelvis, preparing for birth." },
+            { size: "Kaddu (Pumpkin)", emoji: "🎃", desc: "Considered early term! The baby is just practicing and plumping up now." },
+            { size: "Medium Tarbooz", emoji: "🍉", desc: "Brain and lungs are continuing to mature. Vocal cords are ready for that first cry." },
+            { size: "Big Kaddu", emoji: "🎃", desc: "Full term! The baby has shed most of its vernix and lanugo." },
+            { size: "Large Kathal", emoji: "🌳", desc: "Due date week! The baby is fully cooked and ready to meet the world anytime." },
+            { size: "Giant Tarbooz", emoji: "🍉", desc: "Late term. The baby is just getting cozier and a little bigger while waiting for the right moment." }
         ];
 
         let html = '';
         for (let w = 2; w <= 41; w++) {
             const isCurrent = w === currentWeek;
             const data = weekData[w - 2] || { size: "Growing...", emoji: "✨", desc: "Developing steadily." };
+            
+            // Calculate exact dates for this specific week from LMP
+            const weekStart = new Date(lmpDate);
+            weekStart.setDate(weekStart.getDate() + (w - 1) * 7);
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekEnd.getDate() + 6);
+            const dateRangeStr = `${formatDate(weekStart)} to ${formatDate(weekEnd)}`;
             
             // Format number to string, padding single digits with '0' (e.g. "02")
             const paddedW = w.toString().padStart(2, '0');
@@ -1179,7 +1197,7 @@
                     </div>
 
                     <div class="week-details">
-                        <h4 class="week-title">Week ${w}</h4>
+                        <h4 class="week-title">Week ${w} <span style="display:block; font-size:0.55em; color:#444; font-weight:700; margin-top:5px; text-shadow:none;">(${dateRangeStr})</span></h4>
                         <div class="week-desc">${data.desc}</div>
                     </div>
                 </div>
