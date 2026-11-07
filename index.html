@@ -394,8 +394,8 @@
         <button class="tab-btn active" onclick="openTab('dashboard')">📈 Dashboard</button>
         <button class="tab-btn" onclick="openTab('weekly')">📅 Weekly Journey</button>
         <button class="tab-btn" onclick="openTab('events')">🎉 Events</button>
-        <button class="tab-btn" onclick="openTab('tablets')">💊 Prescriptions (2)</button>
-        <button class="tab-btn" onclick="openTab('ultrasounds')">👶 Ultrasounds (5)</button>
+        <button class="tab-btn" onclick="openTab('tablets')">💊 Prescriptions (3)</button>
+        <button class="tab-btn" onclick="openTab('ultrasounds')">👶 Ultrasounds (9)</button>
         <button class="tab-btn" onclick="openTab('bloodtests')">🩸 Blood Tests</button>
         <button class="tab-btn" onclick="openTab('visits')">🩺 Dr. Padma</button>
     </div>
@@ -445,8 +445,15 @@
                 <h3>Weight Trend</h3>
                 <div class="chart-container"><canvas id="weightChart"></canvas></div>
                 <div class="info-box">
-                    <strong>Current BMI: 18.2</strong> (Age: 30 | Height: 5'6" | Weight: 51.2kg)<br>
-                    <em>Insight:</em> A dip from 53kg to 51.2kg in the first trimester is very standard for a 2nd pregnancy due to early metabolic shifts and morning sickness. 
+                    <strong>Current BMI: 18.1</strong> (Age: 30 | Height: 5'6" | Weight: 50.8kg)<br>
+                    <em>Insight:</em> A dip from 53kg to 50.8kg in the first trimester is very standard for a 2nd pregnancy due to early metabolic shifts and morning sickness. 
+                </div>
+
+                <h3 style="margin-top: 40px;">Fetal Heart Rate ❤️</h3>
+                <div class="chart-container"><canvas id="fhrChart"></canvas></div>
+                <div class="info-box">
+                    <strong>Current FHR: 148 bpm</strong> (Normal Range: 120-160 bpm)<br>
+                    <em>Insight:</em> The heart rate has perfectly followed the standard curve! It started at 103 bpm (early formation), peaked at 165 bpm around 10-11 weeks, and has now settled into the highly stable 140-150 range for the 2nd trimester.
                 </div>
             </div>
         </div>
@@ -473,8 +480,9 @@
                 </div>
                 <div class="info-box" style="margin-top: 0;">
                     <h4 style="margin-top: 0; font-size: 1.2em;">Action Items 📝</h4>
-                    <p><strong>Nov 8:</strong> The Golden Milestone. Do the NT Scan (Ultrasound) first, followed immediately by the Double Marker blood test.</p>
-                    <p><strong>Sun, Oct 11:</strong> Collect the officially signed 3-month Work From Home recommendation letter from the clinic between 11:00 AM and 3:00 PM.</p>
+                    <p><strong>Nov 7:</strong> ✅ NT Scan completed successfully 1 day early at Swathi Diagnostics!</p>
+                    <p><strong>Nov 8:</strong> Only the <strong>Double Marker blood test</strong> is remaining. To be completed today.</p>
+                    <p><strong>From Nov 12:</strong> Begin transitioning to the 2nd-trimester supplement stack (Iron & Calcium).</p>
                 </div>
             </div>
         </div>
@@ -515,6 +523,36 @@
 
     <!-- TABLETS -->
     <div id="tablets" class="tab-content">
+        
+        <button class="date-folder-btn" onclick="toggleFolder('rx-nov')">
+            <span>📅 Prescriptions: November 2026</span>
+            <span id="rx-nov-icon">▼</span>
+        </button>
+
+        <div id="rx-nov" style="display: block;">
+            <div class="item-row">
+                <div class="item-img-col">
+                    <a href="Tabs 31.jpeg" download="Tabs_31.jpeg" class="download-btn">⬇ Download</a>
+                    <img src="Tabs 31.jpeg" alt="Prescription 3" onerror="this.src='Tabs 31.jpeg'">
+                </div>
+                <div class="item-details-col">
+                    <div class="mini-cal-badge">
+                        <div class="mini-cal-month">Nov</div>
+                        <div class="mini-cal-day">02</div>
+                        <div class="mini-cal-year">2026</div>
+                    </div>
+                    <h4>Routine Checkup & Med Update</h4>
+                    <div class="clear-float"></div>
+                    <p><strong>Notes:</strong> Weight recorded at 50.8kg, Fetal Heart Rate at 165 bpm.</p>
+                    <ul class="custom-list">
+                        <li><strong>Tab Thyronorm (25mcg):</strong> Continue before breakfast.</li>
+                        <li><strong>Current Meds:</strong> Continue Mec MD, NV OD, and Cramdem for now.</li>
+                        <li><strong>Transition (Nov 12 Onwards):</strong> Starting 2nd-trimester stack! <br><strong>Lupihaem XT</strong> (Iron) after lunch, <strong>Shelcal XT</strong> (Calcium) after dinner, and <strong>Ranidom-O</strong> before lunch.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <!-- Default collapsed -->
         <button class="date-folder-btn" onclick="toggleFolder('rx-oct')">
             <span>📅 Prescriptions: Oct & Sept 2026</span>
@@ -575,6 +613,166 @@
     <!-- ULTRASOUNDS -->
     <div id="ultrasounds" class="tab-content">
         
+        <button class="date-folder-btn" onclick="toggleFolder('usg-nov7')">
+            <span>📅 NT Scan Results: Nov 7, 2026</span>
+            <span id="usg-nov7-icon">▼</span>
+        </button>
+
+        <div id="usg-nov7" style="display: block;">
+            <div class="item-row">
+                <div class="item-img-col">
+                    <a href="Ultra Sound Scan Results 21.jpeg" download="NT_Scan_Report.jpeg" class="download-btn">⬇ Download</a>
+                    <img src="Ultra Sound Scan Results 21.jpeg" alt="NT Scan Report" onerror="this.src='Ultra Sound Scan Results 21.jpeg'">
+                </div>
+                <div class="item-details-col">
+                    <div class="mini-cal-badge">
+                        <div class="mini-cal-month">Nov</div>
+                        <div class="mini-cal-day">07</div>
+                        <div class="mini-cal-year">2026</div>
+                    </div>
+                    <h4>NT Scan Report (First Trimester)</h4>
+                    <div class="clear-float"></div>
+                    <p style="margin-bottom: 5px; font-weight: bold; font-size: 1.1em; color: #d63384; text-shadow: none;">Milestone cleared! The baby is doing excellent. 🎉</p>
+                    <ul class="custom-list">
+                        <li><strong>Gestational Age:</strong> 12 Weeks 4 Days (by USG measurements, baby is growing slightly faster!).</li>
+                        <li><strong>Cervix:</strong> 3.00 cm (Internal os is securely closed).</li>
+                    </ul>
+
+                    <!-- METER 1: CRL -->
+                    <div class="meter-wrapper" style="margin-top: 15px;">
+                        <div class="meter-title">
+                            <span>Crown-Rump Length (CRL)</span>
+                            <span class="meter-indicator ind-avg">Target: Average is optimal</span>
+                        </div>
+                        <div class="meter-track-area">
+                            <div class="meter-bg">
+                                <div class="meter-fill good" style="width: 65%;"></div>
+                                <div class="marker bottom-marker" style="left: 55%;"><span class="marker-label bottom">Global Avg (60mm)</span></div>
+                                <div class="marker top-marker" style="left: 65%;">
+                                    <span class="marker-label zeba-highlight" style="background:var(--primary-pink);">Zeba: 62.4 mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="insight-text"><em>Insight:</em> Measuring beautifully ahead of the 12W4D baseline. Excellent growth trajectory.</p>
+                    </div>
+
+                    <!-- METER 2: FHR -->
+                    <div class="meter-wrapper">
+                        <div class="meter-title">
+                            <span>Fetal Heart Rate (FHR)</span>
+                            <span class="meter-indicator ind-avg">Target: Average is optimal</span>
+                        </div>
+                        <div class="meter-track-area">
+                            <div class="meter-bg">
+                                <div class="meter-fill good" style="width: 60%;"></div>
+                                <div class="marker bottom-marker" style="left: 20%;"><span class="marker-label bottom">Lower Limit (120)</span></div>
+                                <div class="marker bottom-marker alt" style="left: 55%;"><span class="marker-label bottom alt">Global Avg (150)</span></div>
+                                <div class="marker top-marker" style="left: 60%;">
+                                    <span class="marker-label zeba-highlight" style="background:var(--primary-pink);">Zeba: 148 bpm</span>
+                                </div>
+                                <div class="marker bottom-marker" style="left: 85%;"><span class="marker-label bottom">Upper Limit (160)</span></div>
+                            </div>
+                        </div>
+                        <p class="insight-text"><em>Insight:</em> A perfectly strong, stable heart rate right in the middle of the safe zone.</p>
+                    </div>
+
+                    <!-- METER 3: NT -->
+                    <div class="meter-wrapper" style="border-left: 4px solid #a8e063;">
+                        <div class="meter-title">
+                            <span>Nuchal Translucency (NT)</span>
+                            <span class="meter-indicator ind-low">Target: Lower is better</span>
+                        </div>
+                        <div class="meter-track-area">
+                            <div class="meter-bg push-left">
+                                <div class="meter-fill good" style="width: 35%;"></div>
+                                <div class="marker top-marker" style="left: 35%;">
+                                    <span class="marker-label zeba-highlight" style="background:var(--primary-pink);">Zeba: 1.7 mm</span>
+                                </div>
+                                <div class="marker bottom-marker" style="left: 75%; background: #ef6c00;">
+                                    <span class="marker-label bottom" style="color:#ef6c00;">Risk Cutoff (2.5mm)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="insight-text"><em>Insight:</em> Highly reassuring. The fluid at the back of the neck is well below the danger threshold for chromosomal issues.</p>
+                    </div>
+
+                    <!-- METER 4: NASAL BONE -->
+                    <div class="meter-wrapper" style="border-left: 4px solid #a8e063;">
+                        <div class="meter-title">
+                            <span>Nasal Bone (NB)</span>
+                            <span class="meter-indicator ind-high">Target: Higher is better</span>
+                        </div>
+                        <div class="meter-track-area">
+                            <div class="meter-bg">
+                                <div class="meter-fill good" style="width: 80%;"></div>
+                                <div class="marker bottom-marker" style="left: 40%;"><span class="marker-label bottom">Min Target (1.5mm)</span></div>
+                                <div class="marker bottom-marker alt" style="left: 60%;"><span class="marker-label bottom alt">Global Avg (2.0mm)</span></div>
+                                <div class="marker top-marker" style="left: 80%;">
+                                    <span class="marker-label zeba-highlight" style="background:var(--primary-pink);">Zeba: 2.6 mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="insight-text"><em>Insight:</em> Clearly visualized and strongly formed! A thick, visible nasal bone is a massive positive indicator for genetic health.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-row">
+                <div class="item-img-col">
+                    <a href="Ultra Sound Scan Results 22.jpeg" download="NT_Scan_Impression.jpeg" class="download-btn">⬇ Download</a>
+                    <img src="Ultra Sound Scan Results 22.jpeg" alt="NT Scan Impression" onerror="this.src='Ultra Sound Scan Results 22.jpeg'">
+                </div>
+                <div class="item-details-col">
+                    <div class="mini-cal-badge">
+                        <div class="mini-cal-month">Nov</div>
+                        <div class="mini-cal-day">07</div>
+                        <div class="mini-cal-year">2026</div>
+                    </div>
+                    <h4>Radiologist Impression</h4>
+                    <div class="clear-float"></div>
+                    <p>Official sign-off by Dr. Swathi Desai at Swathi Diagnostic Centre, Vijayapura.</p>
+                    <ul class="custom-list">
+                        <li><strong>Confirmation:</strong> Single live intrauterine fetus.</li>
+                        <li><strong>EDD Update:</strong> Based on the baby's excellent 12W4D size today, the ultrasound machine calculates a new estimated due date of <strong>May 18, 2027</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="item-row">
+                <div class="item-img-col">
+                    <a href="Ultra Sound Scan Results 23.jpeg" download="NT_Scan_Sonar.jpeg" class="download-btn">⬇ Download</a>
+                    <img src="Ultra Sound Scan Results 23.jpeg" alt="NT Scan Sonar" onerror="this.src='Ultra Sound Scan Results 23.jpeg'">
+                </div>
+                <div class="item-details-col">
+                    <div class="mini-cal-badge">
+                        <div class="mini-cal-month">Nov</div>
+                        <div class="mini-cal-day">07</div>
+                        <div class="mini-cal-year">2026</div>
+                    </div>
+                    <h4>Raw Sonar Imagery</h4>
+                    <div class="clear-float"></div>
+                    <p>Multiple profile angles captured to properly measure the fluid at the back of the neck (NT) and locate the tiny nasal bone.</p>
+                </div>
+            </div>
+
+            <div class="item-row">
+                <div class="item-img-col">
+                    <a href="Ultra Sound Scan Results 24.jpeg" download="NT_Scan_Doppler.jpeg" class="download-btn">⬇ Download</a>
+                    <img src="Ultra Sound Scan Results 24.jpeg" alt="NT Scan Doppler" onerror="this.src='Ultra Sound Scan Results 24.jpeg'">
+                </div>
+                <div class="item-details-col">
+                    <div class="mini-cal-badge">
+                        <div class="mini-cal-month">Nov</div>
+                        <div class="mini-cal-day">07</div>
+                        <div class="mini-cal-year">2026</div>
+                    </div>
+                    <h4>Doppler Measurements</h4>
+                    <div class="clear-float"></div>
+                    <p><strong>Ductus Venosus:</strong> The waveform patterns of blood flow are completely normal, showing excellent cardiovascular health.</p>
+                </div>
+            </div>
+        </div>
+
         <button class="date-folder-btn" onclick="toggleFolder('usg-oct')">
             <span>📅 Ultrasound Requests: October 9, 2026</span>
             <span id="usg-oct-icon">▶</span>
@@ -959,9 +1157,20 @@
                     <!-- LATEST ON TOP -->
                     <div class="timeline-item future-visit">
                         <div class="timeline-date">✨ UPCOMING: November 8, 2026 ✨</div>
-                        <strong>The Golden Milestone Scan & Test</strong>
-                        <p><strong>NT Scan:</strong> Checking normal fluid level at the back of the baby's neck and confirming nasal bone formation.</p>
-                        <p><strong>Dual Marker Test:</strong> To be done same-day. Combined with the NT scan, provides massive reassurance of excellent chromosomal health.</p>
+                        <strong>Double Marker Blood Test 🩸</strong>
+                        <p>The NT Scan was completed a day early! Today is just the blood draw for genetic testing to pair with the sonography data.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">November 7, 2026</div>
+                        <strong>NT Milestone Scan 👶</strong>
+                        <p>Completed at Swathi Diagnostic Centre. <strong>Results were perfectly normal.</strong> Nasal bone present, NT 1.7mm, FHR 148 bpm. Baby measuring slightly ahead at 12w4d!</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">November 2, 2026</div>
+                        <strong>Routine Checkup 🩺</strong>
+                        <p>Dr. Padma updated the prescription plan, preparing Zeba for the 2nd-trimester Iron and Calcium stack starting Nov 12. FHR noted at 165 bpm.</p>
                     </div>
 
                     <div class="timeline-item">
@@ -997,8 +1206,8 @@
                         <h4>November 2026</h4>
                         <div class="cal-grid">
                             <span class="day-header">S</span><span class="day-header">M</span><span class="day-header">T</span><span class="day-header">W</span><span class="day-header">T</span><span class="day-header">F</span><span class="day-header">S</span>
-                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
-                            <span class="highlight" style="background: gold; color: #333;" title="NT Scan & Dual Marker">8<div class="cal-icon">👶🩸</div></span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                            <span>1</span><span class="highlight" title="Routine Checkup">2<div class="cal-icon">🩺</div></span><span>3</span><span>4</span><span>5</span><span>6</span><span class="highlight" title="NT Scan Completed!">7<div class="cal-icon">👶</div></span>
+                            <span class="highlight" style="background: gold; color: #333;" title="Dual Marker Blood Test">8<div class="cal-icon">🩸</div></span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
                             <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
                             <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
                             <span>29</span><span>30</span><span class="empty"></span><span class="empty"></span><span class="empty"></span><span class="empty"></span><span class="empty"></span>
@@ -1296,10 +1505,10 @@
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['2 Months Ago', '1 Month Ago', '25 Oct 2026', '01 Nov 2026'],
+            labels: ['2 Mos Ago', '1 Mo Ago', '25 Oct', '01 Nov', '02 Nov'],
             datasets: [{
                 label: 'Weight',
-                data: [53, 52, 51.5, 51.2],
+                data: [53, 52, 51.5, 51.2, 50.8],
                 borderColor: '#ff6b8b',
                 backgroundColor: 'rgba(255, 107, 139, 0.2)',
                 borderWidth: 4,
@@ -1336,6 +1545,60 @@
                         return value + ' kg';
                     },
                     color: '#d63384',
+                    font: {
+                        weight: 'bold',
+                        size: 14
+                    },
+                    offset: 6
+                }
+            }
+        }
+    });
+
+    const fhrCtx = document.getElementById('fhrChart').getContext('2d');
+    new Chart(fhrCtx, {
+        type: 'line',
+        data: {
+            labels: ['30 Sep', '02 Nov', '07 Nov'],
+            datasets: [{
+                label: 'FHR (bpm)',
+                data: [103, 165, 148],
+                borderColor: '#a8e063',
+                backgroundColor: 'rgba(168, 224, 99, 0.2)',
+                borderWidth: 4,
+                pointBackgroundColor: '#fff',
+                pointBorderColor: '#a8e063',
+                pointBorderWidth: 3,
+                pointRadius: 7,
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { 
+                y: { 
+                    min: 90, 
+                    max: 180,
+                    ticks: {
+                        callback: function(value) { return value + ' bpm'; },
+                        font: { weight: 'bold' }
+                    }
+                },
+                x: {
+                    ticks: { font: { weight: 'bold' } }
+                }
+            },
+            plugins: { 
+                legend: { display: false },
+                datalabels: {
+                    align: 'top',
+                    anchor: 'end',
+                    formatter: function(value) {
+                        return value;
+                    },
+                    color: '#2e7d32',
                     font: {
                         weight: 'bold',
                         size: 14
