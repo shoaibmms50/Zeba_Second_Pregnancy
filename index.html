@@ -487,7 +487,7 @@
                 <div class="chart-container"><canvas id="weightChart"></canvas></div>
                 <div class="info-box">
                     <strong>Current BMI: 18.2</strong> (Age: 30 | Height: 5'6" | Weight: 51.0kg)<br>
-                    <em>Insight:</em> After an expected first-trimester dip down to 50.8kg, Zeba's weight has begun a steady, healthy upward climb to 51.0kg as of 21 Nov 2026.
+                    <em>Insight:</em> After an expected first-trimester dip down to 50.8kg, Zeba's weight climbed to 51.0kg on 21 Nov and remained steady at 51.0kg when checked again on 26 Nov 2026.
                 </div>
 
                 <h3 style="margin-top: 40px;">Fetal Heart Rate ❤️</h3>
@@ -557,6 +557,28 @@
                 <p><strong>Notes:</strong> Zeba has been facing constipation issues for about a week. The doctor was consulted regarding this discomfort.</p>
                 <ul class="custom-list">
                     <li><strong>Treatment:</strong> Doctor advised taking <strong>Duphalac syrup</strong> to safely relieve the constipation.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="item-img-col">
+                <a href="Febrex_Plus.jpeg" download="Febrex_Plus.jpeg" class="download-btn">⬇ Download</a>
+                <img src="https://placehold.co/400x400/ffdde1/333?text=Tab+Febrex+Plus" alt="Tab Febrex Plus" onerror="this.src='Febrex Plus.jpeg'">
+            </div>
+            <div class="item-details-col">
+                <div class="mini-cal-badge">
+                    <div class="mini-cal-month">Nov</div>
+                    <div class="mini-cal-day">27</div>
+                    <div class="mini-cal-year">2026</div>
+                </div>
+                <h4>Fever &amp; Cold Medication</h4>
+                <div class="clear-float"></div>
+                <p><strong>Notes:</strong> Reference medication for managing both fever and cold symptoms safely during pregnancy.</p>
+                <ul class="custom-list">
+                    <li><strong>Medicine:</strong> <strong>Tab Febrex Plus</strong> — for both fever and cold.</li>
+                    <li><strong>Dosage:</strong> Twice a day, after food.</li>
+                    <li><strong>Pregnancy Note:</strong> Can be taken if having fever or cold during pregnancy.</li>
                 </ul>
             </div>
         </div>
@@ -1196,10 +1218,16 @@
                 <h3>Dr. Padma Appointments</h3>
                 <div class="timeline">
                     <!-- LATEST ON TOP -->
-                    <div class="timeline-item future-visit">
-                        <div class="timeline-date">✨ UPCOMING: November 8, 2026 ✨</div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">November 19, 2026</div>
+                        <strong>Consultation &amp; Injection 🩺💉</strong>
+                        <p>Visited Dr. Padma and Zeba received an injection (typically the scheduled prenatal vaccine dose around 13–14 weeks; exact injection name was not listed on earlier prescription slips).</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">November 8, 2026</div>
                         <strong>Double Marker Blood Test 🩸</strong>
-                        <p>The NT Scan was completed a day early! Today is just the blood draw for genetic testing to pair with the sonography data.</p>
+                        <p>Scheduled blood draw for genetic testing to pair with the NT sonography data.</p>
                     </div>
 
                     <div class="timeline-item">
@@ -1248,8 +1276,8 @@
                         <div class="cal-grid">
                             <span class="day-header">S</span><span class="day-header">M</span><span class="day-header">T</span><span class="day-header">W</span><span class="day-header">T</span><span class="day-header">F</span><span class="day-header">S</span>
                             <span>1</span><span class="highlight" title="Routine Checkup">2<div class="cal-icon">🩺</div></span><span>3</span><span>4</span><span>5</span><span>6</span><span class="highlight" title="NT Scan Completed!">7<div class="cal-icon">👶</div></span>
-                            <span class="highlight" style="background: gold; color: #333;" title="Dual Marker Blood Test">8<div class="cal-icon">🩸</div></span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
-                            <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+                            <span class="highlight" title="Dual Marker Blood Test">8<div class="cal-icon">🩸</div></span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                            <span>15</span><span>16</span><span>17</span><span>18</span><span class="highlight" title="Dr. Padma Visit &amp; Injection">19<div class="cal-icon">💉</div></span><span>20</span><span>21</span>
                             <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
                             <span>29</span><span>30</span><span class="empty"></span><span class="empty"></span><span class="empty"></span><span class="empty"></span><span class="empty"></span>
                         </div>
@@ -1631,10 +1659,10 @@
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['2 Mos Ago', '1 Mo Ago', '25 Oct', '01 Nov', '02 Nov', '21 Nov'],
+            labels: ['2 Mos Ago', '1 Mo Ago', '25 Oct', '01 Nov', '02 Nov', '21 Nov', '26 Nov'],
             datasets: [{
                 label: 'Weight',
-                data: [53, 52, 51.5, 51.2, 50.8, 51.0],
+                data: [53, 52, 51.5, 51.2, 50.8, 51.0, 51.0],
                 borderColor: '#ff6b8b',
                 backgroundColor: 'rgba(255, 107, 139, 0.2)',
                 borderWidth: 4,
